@@ -52,11 +52,11 @@ if __name__ == "__main__":
 
     if args.attachments != None:
         # Add email attachment.
-
-        log.info('Attachments: %s', args.attachments)
+        
+        print(args.attachments)
         for fname in args.attachments:
             basename = os.path.basename(fname)
-            log.info('fname: %s', fname)
+            print(fname)
             with open(fname, "rb") as file:
                 content = base64.b64encode(file.read()).decode('utf-8')
     

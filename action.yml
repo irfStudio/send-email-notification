@@ -1,5 +1,6 @@
 name: 'Send Email With SendGrid'
-author: 'meysam@licenseware.io'
+author: 'ing.roberto.fioravanti@gmail.com'
+credits: 'meysam@licenseware.io'
 description: 'Using python library, send an email to SendGrid API'
 branding:
   icon: 'info'
@@ -15,6 +16,8 @@ inputs:
     required: true
   markdown-body:
     required: true
+  attachments:
+    required: false
 
 runs:
   using: 'docker'
@@ -25,3 +28,4 @@ runs:
     - --to=${{ inputs.to-email }}
     - --subject=${{ inputs.subject }}
     - --markdown-body=${{ inputs.markdown-body }}
+    - --attachments=${{ inputs.attachments }}

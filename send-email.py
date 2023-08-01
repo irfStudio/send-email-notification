@@ -52,7 +52,7 @@ if __name__ == "__main__":
 
     if args.attachments != None:
         # Add email attachment.
-        
+        print(os.getcwd())
         print(args.attachments)
         for fname in args.attachments:
             basename = os.path.basename(fname)

@@ -54,6 +54,11 @@ if __name__ == "__main__":
         # Add email attachment.
         print(os.getcwd())
         print(args.attachments)
+        
+        print("Directory contents:")
+        for f in os.listdir():
+            print(f)
+        
         for fname in args.attachments:
             basename = os.path.basename(fname)
             print(fname)

@@ -50,7 +50,8 @@ if __name__ == "__main__":
         html_content=markdown.markdown(args.markdown_body),
     )
 
-    if args.attachments is not None:
+    A = [i for i in args.attachments if i]
+    if len(A):
         # Add email attachment.
         #print(os.getcwd())
         print(args.attachments)

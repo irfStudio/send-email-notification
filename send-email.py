@@ -78,7 +78,7 @@ if __name__ == "__main__":
                 content_id=f"<{basename}>"
             )
     
-            #message.add_attachment(attachment)
+            message.add_attachment(attachment)
       
 
     

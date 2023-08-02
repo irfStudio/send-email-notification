@@ -88,4 +88,5 @@ if __name__ == "__main__":
         print(response.headers)
     except Exception as exp:
         sys.stderr.write(f"{exp}\n")
+        print(response)
         exit(1)

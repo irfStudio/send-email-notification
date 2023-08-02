@@ -51,8 +51,8 @@ if __name__ == "__main__":
         html_content=markdown.markdown(args.markdown_body),
     )
 
-    A = args.attachments.split(", ")
-    A = [i for i in args.attachments if i]
+    
+    A = [path for item in args.attachments for path in item.split(" ")]
     print("attachments entries:")
     print(A)
     #---------------------------

@@ -71,7 +71,7 @@ if __name__ == "__main__":
         #for f in os.listdir():
         #    print(f)
         
-        for fname in args.attachments:
+        for fname in A:
             basename = os.path.basename(fname)
             print("fname:")
             print(fname)

@@ -50,14 +50,14 @@ if __name__ == "__main__":
         html_content=markdown.markdown(args.markdown_body),
     )
 
-    if args.attachments != None:
+    if args.attachments is not None:
         # Add email attachment.
-        print(os.getcwd())
+        #print(os.getcwd())
         print(args.attachments)
         
-        print("Directory contents:")
-        for f in os.listdir():
-            print(f)
+        #print("Directory contents:")
+        #for f in os.listdir():
+        #    print(f)
         
         for fname in args.attachments:
             basename = os.path.basename(fname)

@@ -61,7 +61,10 @@ if __name__ == "__main__":
         
         for fname in args.attachments:
             basename = os.path.basename(fname)
+            print("fname:")
             print(fname)
+            print("basename:")
+            print(basename)
             with open(fname, "rb") as file:
                 content = base64.b64encode(file.read()).decode('utf-8')
     

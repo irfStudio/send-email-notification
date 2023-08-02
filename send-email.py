@@ -51,6 +51,14 @@ if __name__ == "__main__":
     )
 
     A = [i for i in args.attachments if i]
+
+    #---------------------------
+    # TODO 
+    # Evaluate to use glob
+    # https://stackoverflow.com/questions/3964681/find-all-files-in-a-directory-with-extension-txt-in-python
+    # >>> import glob
+    # >>> glob.glob('./*.txt')
+    # https://www.geeksforgeeks.org/how-to-use-glob-function-to-find-files-recursively-in-python/
     if len(A):
         # Add email attachment.
         #print(os.getcwd())

@@ -38,7 +38,7 @@ parser.add_argument(
 )
 parser.add_argument("--api-key", type=str, required=True, help="SendGrid API key")
 #parser.add_argument("--attachments", dest="attachments", type=str, nargs="+", required=False, help="attachments")
-parser.add_argument("--attachments", dest="attachments",default=[], nargs="+", required=False, help="attachments")
+parser.add_argument("--attachments", type=str, dest="attachments",default='', nargs="+", required=False, help="attachments")
 
 if __name__ == "__main__":
 

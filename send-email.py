@@ -66,7 +66,8 @@ if __name__ == "__main__":
             print("basename:")
             print(basename)
             with open(fname, "rb") as file:
-                content = base64.b64encode(file.read()).decode('utf-8')
+                #content = base64.b64encode(file.read()).decode('utf-8')
+                content = base64.b64encode(file.read()).decode()
     
             attachment = Attachment(
                 file_content=content,
@@ -83,10 +84,11 @@ if __name__ == "__main__":
     try:
         sg = SendGridAPIClient(args.api_key)
         response = sg.send(message)
+        print(response)
         print(response.status_code)
         print(response.body)
         print(response.headers)
     except Exception as exp:
         sys.stderr.write(f"{exp}\n")
-        print(response)
+        
         exit(1)

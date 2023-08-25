@@ -52,7 +52,13 @@ parser.add_argument(
 if __name__ == "__main__":
 
     args = parser.parse_args()
-    to=[To(e) for e in args.to_email]
+    print("to_email:")
+    print(args.to_email)
+    to=[e for e in args.to_email]
+    
+    print("to:")
+    print(to)
+    
     message = Mail(
         from_email=args.from_email,
         to_emails=to,

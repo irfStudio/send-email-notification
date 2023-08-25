@@ -7,6 +7,10 @@ import base64
 import mimetypes
 import os
 
+
+import glob
+
+
 from sendgrid.helpers.mail import (
     Attachment, Category, Content, CustomArg, Email, Mail, MailSettings, Personalization, SandBoxMode,
 )
@@ -63,33 +67,41 @@ if __name__ == "__main__":
     # >>> glob.glob('./*.txt')
     # https://www.geeksforgeeks.org/how-to-use-glob-function-to-find-files-recursively-in-python/
     if len(A):
+        
         # Add email attachment.
         #print(os.getcwd())
-        print(args.attachments)
+        #print(args.attachments)
+
+        
         
         #print("Directory contents:")
         #for f in os.listdir():
         #    print(f)
         
         for fname in A:
-            basename = os.path.basename(fname)
-            print("fname:")
-            print(fname)
-            print("basename:")
-            print(basename)
-            with open(fname, "rb") as file:
-                #content = base64.b64encode(file.read()).decode('utf-8')
-                content = base64.b64encode(file.read()).decode()
-    
-            attachment = Attachment(
-                file_content=content,
-                file_type=mimetypes.guess_type(basename)[0],
-                file_name=basename,
-                disposition="attachment",
-                content_id=f"<{basename}>"
-            )
-    
-            message.add_attachment(attachment)
+
+            for f in glob.iglob(fname): # generator, search immediate subdirectories 
+                print f
+            
+                #basename = os.path.basename(fname)
+                basename = os.path.basename(f)
+                print("fname:")
+                print(f)
+                print("basename:")
+                print(basename)
+                with open(f, "rb") as file:
+                    #content = base64.b64encode(file.read()).decode('utf-8')
+                    content = base64.b64encode(file.read()).decode()
+        
+                attachment = Attachment(
+                    file_content=content,
+                    file_type=mimetypes.guess_type(basename)[0],
+                    file_name=basename,
+                    disposition="attachment",
+                    content_id=f"<{basename}>"
+                )
+        
+                message.add_attachment(attachment)
       
 
     

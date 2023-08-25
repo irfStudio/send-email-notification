@@ -54,7 +54,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
     print("to_email:")
     print(args.to_email)
-    to=[e for e in args.to_email]
+    to=[e for item in args.to_email for e in item.split(" ")]
     
     print("to:")
     print(to)

@@ -81,12 +81,12 @@ if __name__ == "__main__":
         for fname in A:
 
             for f in glob.iglob(fname): # generator, search immediate subdirectories 
-                print f
+                print("fname:")
+                print(f)
             
                 #basename = os.path.basename(fname)
                 basename = os.path.basename(f)
-                print("fname:")
-                print(f)
+               
                 print("basename:")
                 print(basename)
                 with open(f, "rb") as file:

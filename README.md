@@ -1,4 +1,4 @@
-E-mail Release Notification
+# E-mail Release Notification
 This repo contains a re-usable GitHub Action that when installed sends an e-mail to a distribution list with the release notes every time a GitHub Release is created for the repository.
 
 [![Build Image](https://github.com/licenseware/send-email-notification/actions/workflows/build-image.yml/badge.svg)](https://github.com/licenseware/send-email-notification/actions/workflows/build-image.yml)
@@ -43,7 +43,7 @@ jobs:
     strategy:
       matrix:
         to-emails:
-          - receiver1@licenseware.io
+          - receiver10@licenseware.io receiver11@licenseware.io
           - receiver2@licenseware.io
           - receiver3@licenseware.io
 

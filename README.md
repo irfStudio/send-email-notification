@@ -17,9 +17,9 @@ This repository is used inside Github Actions in the following format:
 
 Setup
 1. Create the workflow
-Add a new YML file workflow in '.github/workflows' to trigger on release. For example:
+Add a new YML file workflow in .github/workflows to trigger on release. For example:
 
-## Send email to one address
+### Send email to one address
 
 ```yaml
       - uses: licenseware/send-email-notification@v1
@@ -38,7 +38,7 @@ Add a new YML file workflow in '.github/workflows' to trigger on release. For ex
             Another description
 ```
 
-## Send email to multiple address upon Github release
+### Send email to multiple address upon Github release
 
 ```yaml
 on:
@@ -67,3 +67,5 @@ jobs:
           markdown-body: ${{ github.event.release.body }}
 
 ```
+2. Set the SendGrid secret
+Create a new secret on your project named SENDGRID_API_TOKEN. Set the value to your [SendGrid API Key](https://sendgrid.com/docs/ui/account-and-settings/api-keys/).

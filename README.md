@@ -13,8 +13,6 @@ To run this action you'll need:
 
 A [SendGrid API Key](https://sendgrid.com/docs/ui/account-and-settings/api-keys/). SendGrid is [free to up 100 e-mails a day](https://sendgrid.com/pricing/) so feel free to register and get your API KEY.
 
-This repository is used inside Github Actions in the following format:
-
 ## Setup
 ### 1. Create the workflow
 Add a new YML file workflow in `.github/workflows` to trigger on `release`. For example:
@@ -117,3 +115,7 @@ Sending multiple files matching specified patterns:
 
 ### 2. Set the SendGrid secret
 Create a new secret on your project named SENDGRID_API_TOKEN. Set the value to your [SendGrid API Key](https://sendgrid.com/docs/ui/account-and-settings/api-keys/).
+
+### 3. Test the workflow!
+
+Create a new release for your repository and verify that the action triggers and that the e-mails were sent. Sometimes it's worth checking the spam inbox.

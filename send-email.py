@@ -70,24 +70,10 @@ if __name__ == "__main__":
     A = [path for item in args.attachments for path in item.split(" ")]
     print("attachments entries:")
     print(A)
-    #---------------------------
-    # TODO 
-    # Evaluate to use glob
-    # https://stackoverflow.com/questions/3964681/find-all-files-in-a-directory-with-extension-txt-in-python
-    # >>> import glob
-    # >>> glob.glob('./*.txt')
-    # https://www.geeksforgeeks.org/how-to-use-glob-function-to-find-files-recursively-in-python/
+    
     if len(A):
         
-        # Add email attachment.
-        #print(os.getcwd())
-        #print(args.attachments)
-
         
-        
-        #print("Directory contents:")
-        #for f in os.listdir():
-        #    print(f)
         
         for fname in A:
 
@@ -101,7 +87,6 @@ if __name__ == "__main__":
                 print("basename:")
                 print(basename)
                 with open(f, "rb") as file:
-                    #content = base64.b64encode(file.read()).decode('utf-8')
                     content = base64.b64encode(file.read()).decode()
         
                 attachment = Attachment(

@@ -9,16 +9,9 @@ import sys
 
 import markdown
 from sendgrid import SendGridAPIClient
-from sendgrid.helpers.mail import (
+from sendgrid.helpers.mail import (  # Category,; Content,; CustomArg,; Email,; MailSettings,; Personalization,; SandBoxMode,
     Attachment,
-    # Category,
-    # Content,
-    # CustomArg,
-    # Email,
     Mail,
-    # MailSettings,
-    # Personalization,
-    # SandBoxMode,
 )
 
 parser = argparse.ArgumentParser()

@@ -68,9 +68,9 @@ jobs:
 
 ```
 
-#### Send email with attachemnts
+#### Send email with attachments
 
-Sending `example.txt` as attachment
+Sending email with file `example.txt` as attachment
 ```yaml
     steps:
       - uses: licenseware/send-email-notification@v1
@@ -82,6 +82,8 @@ Sending `example.txt` as attachment
           markdown-body: ${{ github.event.release.body }}
           attachments: Attachments/example.txt
 ```
+
+
 Sending all the txt files matching in `Attachments`
 ```yaml
     steps:
@@ -95,7 +97,9 @@ Sending all the txt files matching in `Attachments`
           attachments: Attachments/*.txt
 ```
 
-Sending multiple files matching specified patterns
+Sending multiple files matching specified patterns:
+- all `.txt` files in
+- all `.csv` files across multiple directory levels
 ```yaml
     steps:
       - uses: licenseware/send-email-notification@v1
@@ -105,7 +109,7 @@ Sending multiple files matching specified patterns
           from-email: verified-email@licenseware.io
           to-email: ${{ matrix.to-emails }}
           markdown-body: ${{ github.event.release.body }}
-          attachments: Attachments/*.txt Attachments/**/.csv 
+          attachments: Attachments/*.txt Attachments/**/*.csv 
 ```
 
 ##### References

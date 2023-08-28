@@ -1,23 +1,25 @@
 #!/usr/local/bin/python
 
 import argparse
-import sys
-
 import base64
+import glob
 import mimetypes
 import os
-
-
-import glob
-
-
-from sendgrid.helpers.mail import (
-    Attachment, Category, Content, CustomArg, Email, Mail, MailSettings, Personalization, SandBoxMode,
-)
-
+import sys
 import markdown
 from sendgrid import SendGridAPIClient
-from sendgrid.helpers.mail import Mail
+from sendgrid.helpers.mail import (
+    Attachment,
+    Category,
+    Content,
+    CustomArg,
+    Email,
+    Mail,
+    MailSettings,
+    Personalization,
+    SandBoxMode,
+)
+
 
 parser = argparse.ArgumentParser()
 parser.add_argument(

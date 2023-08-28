@@ -7,6 +7,12 @@ This repo contains a re-usable GitHub Action that when installed sends an e-mail
 Using [the Python library](https://pypi.org/project/sendgrid/), send email to people
 with the content, subject, attachments of your choice.
 
+
+## Pre-Requisites
+To run this action you'll need:
+
+A [SendGrid API Key](https://sendgrid.com/docs/ui/account-and-settings/api-keys/). SendGrid is [free to up 100 e-mails a day](https://sendgrid.com/pricing/) so feel free to register and get your API KEY.
+
 This repository is used inside Github Actions in the following format:
 
 ## Send email to one address

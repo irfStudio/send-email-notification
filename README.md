@@ -15,6 +15,10 @@ A [SendGrid API Key](https://sendgrid.com/docs/ui/account-and-settings/api-keys/
 
 This repository is used inside Github Actions in the following format:
 
+Setup
+1. Create the workflow
+Add a new YML file workflow in '.github/workflows' to trigger on release. For example:
+
 ## Send email to one address
 
 ```yaml

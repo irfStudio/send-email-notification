@@ -68,16 +68,16 @@ if __name__ == "__main__":
 
     if len(A):
         for fname in A:
-            for f in glob.iglob(fname):  # generator, search immediate subdirectories 
+            for f in glob.iglob(fname):  # generator, search immediate subdirectories
                 print("fname:")
                 print(f)
                 basename = os.path.basename(f)
-               
+
                 print("basename:")
                 print(basename)
                 with open(f, "rb") as file:
                     content = base64.b64encode(file.read()).decode()
-        
+
                 attachment = Attachment(
                     file_content=content,
                     file_type=mimetypes.guess_type(basename)[0],

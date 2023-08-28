@@ -1,10 +1,11 @@
-# Send Email Notification
+E-mail Release Notification
+This repo contains a re-usable GitHub Action that when installed sends an e-mail to a distribution list with the release notes every time a GitHub Release is created for the repository.
 
 [![Build Image](https://github.com/licenseware/send-email-notification/actions/workflows/build-image.yml/badge.svg)](https://github.com/licenseware/send-email-notification/actions/workflows/build-image.yml)
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
 
 Using [the Python library](https://pypi.org/project/sendgrid/), send email to people
-with the content & subject of your choice.
+with the content, subject, attachments of your choice.
 
 This repository is used inside Github Actions in the following format:
 

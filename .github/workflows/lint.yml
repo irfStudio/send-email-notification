@@ -49,7 +49,7 @@ jobs:
 
       - name: Run black
         run: |
-          black --check --df .
+          black --check --diff .
 
   isort:
     runs-on: ubuntu-latest

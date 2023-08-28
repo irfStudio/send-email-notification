@@ -32,7 +32,7 @@ parser.add_argument(
     help="Email address to send the notification to",
 )
 parser.add_argument("--subject", type=str, required=True, help="Subject of the email")
-parser.add_argument(    "--markdown-body", type=str, required=True, help="Body of the email")
+parser.add_argument("--markdown-body", type=str, required=True, help="Body of the email")
 parser.add_argument(
     "--from",
     dest="from_email",
@@ -43,7 +43,7 @@ parser.add_argument(
 parser.add_argument("--api-key", type=str, required=True, help="SendGrid API key")
 
 parser.add_argument(
-    "--attachments", type=str, dest="attachments", default='', nargs="+", required=False, help="attachments"
+    "--attachments", type=str, dest="attachments", default="", nargs="+", required=False, help="attachments"
 )
 
 if __name__ == "__main__":
@@ -51,21 +51,21 @@ if __name__ == "__main__":
     print("to_email:")
     print(args.to_email)
     to = [e for item in args.to_email for e in item.split(" ")]
-    
+
     print("to:")
     print(to)
-    
+
     message = Mail(
         from_email=args.from_email,
         to_emails=to,
         subject=args.subject,
         html_content=markdown.markdown(args.markdown_body),
     )
-    
+
     A = [path for item in args.attachments for path in item.split(" ")]
     print("attachments entries:")
     print(A)
-    
+
     if len(A):
         for fname in A:
             for f in glob.iglob(fname):  # generator, search immediate subdirectories 
@@ -86,7 +86,7 @@ if __name__ == "__main__":
                     content_id=f"<{basename}>",
                 )
                 message.add_attachment(attachment)
-                
+
     try:
         sg = SendGridAPIClient(args.api_key)
         response = sg.send(message)
@@ -96,5 +96,5 @@ if __name__ == "__main__":
         print(response.headers)
     except Exception as exp:
         sys.stderr.write(f"{exp}\n")
-        
+
         exit(1)

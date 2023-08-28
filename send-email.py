@@ -6,6 +6,7 @@ import glob
 import mimetypes
 import os
 import sys
+
 import markdown
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import (
@@ -19,7 +20,6 @@ from sendgrid.helpers.mail import (
     Personalization,
     SandBoxMode,
 )
-
 
 parser = argparse.ArgumentParser()
 parser.add_argument(

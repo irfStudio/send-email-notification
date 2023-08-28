@@ -67,5 +67,49 @@ jobs:
           markdown-body: ${{ github.event.release.body }}
 
 ```
+
+#### Send email with attachemnts
+
+Sending `example.txt` as attachment
+```yaml
+    steps:
+      - uses: licenseware/send-email-notification@v1
+        with:
+          api-key: ${{ secrets.SENDGRID_API_KEY }}
+          subject: New Release ${{ github.repository }}:${{ github.ref_name }}
+          from-email: verified-email@licenseware.io
+          to-email: ${{ matrix.to-emails }}
+          markdown-body: ${{ github.event.release.body }}
+          attachments: Attachments/example.txt
+```
+Sending all the txt files matching in `Attachments`
+```yaml
+    steps:
+      - uses: licenseware/send-email-notification@v1
+        with:
+          api-key: ${{ secrets.SENDGRID_API_KEY }}
+          subject: New Release ${{ github.repository }}:${{ github.ref_name }}
+          from-email: verified-email@licenseware.io
+          to-email: ${{ matrix.to-emails }}
+          markdown-body: ${{ github.event.release.body }}
+          attachments: Attachments/*.txt
+```
+
+Sending multiple files matching specified patterns
+```yaml
+    steps:
+      - uses: licenseware/send-email-notification@v1
+        with:
+          api-key: ${{ secrets.SENDGRID_API_KEY }}
+          subject: New Release ${{ github.repository }}:${{ github.ref_name }}
+          from-email: verified-email@licenseware.io
+          to-email: ${{ matrix.to-emails }}
+          markdown-body: ${{ github.event.release.body }}
+          attachments: Attachments/*.txt Attachments/**/.csv 
+```
+
+##### References
+- [glob](https://docs.python.org/3/library/glob.html)
+
 ### 2. Set the SendGrid secret
 Create a new secret on your project named SENDGRID_API_TOKEN. Set the value to your [SendGrid API Key](https://sendgrid.com/docs/ui/account-and-settings/api-keys/).

@@ -1,13 +1,16 @@
-FROM python:3.10-alpine
+FROM python:3.11-alpine
 
 LABEL author="Meysam Azad <meysam@licenseware.io>"
 
+WORKDIR /app
+
 ENV PYTHONUNBUFFERED=1
 
-RUN pip install -U pip
+COPY requirements.txt /
+RUN apk add --update libmagic && \
+    pip install -U pip -r /requirements.txt
 
-COPY . .
+COPY send-email.py ./
 
-RUN pip install -r requirements.txt
+ENTRYPOINT ["/app/send-email.py"]
 
-ENTRYPOINT ["/send-email.py"]

@@ -12,7 +12,7 @@ line-length = 130
 profile = "black"
 
 [tool.coverage.report]
-include = ["sendemail.py"]
+include = ["/src/sendemail.py"]
 show_missing = true
 
 [tool.coverage.paths]

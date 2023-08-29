@@ -1,5 +1,5 @@
 import unittest
-import send-email
+import main
 
 class TestListElements(unittest.TestCase):
     def setUp(self):

@@ -35,7 +35,7 @@ jobs:
 
     - name: Test with unittest
       run: |
-        python --source=. -m unittest test/test_list.py
+        python -m unittest test/test_list.py
 
   black:
     runs-on: ubuntu-latest

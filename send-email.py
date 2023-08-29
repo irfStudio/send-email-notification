@@ -41,7 +41,7 @@ parser.add_argument("--attachments", type=str, dest="attachments", default="", n
 
 def make_list(arg: str):
     """Converts a \n ; , separated string to a list"""
-    return list(filter(None, re.split(" |;|,|\n", str)))
+    return list(filter(None, re.split(" |;|,|\n", arg)))
 
 
 if __name__ == "__main__":

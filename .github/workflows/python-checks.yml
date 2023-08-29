@@ -35,7 +35,7 @@ jobs:
 
     - name: Test with unittest
       run: |
-        python --source=. -m unittest test/test.py
+        python --source=. -m unittest test/test_list.py
 
   black:
     runs-on: ubuntu-latest
@@ -132,7 +132,7 @@ jobs:
 
       - name: Test with unittest
         run: |
-          coverage run -m unittest test/test.py
+          coverage run -m unittest test/test_list.py
           coverage report -m
         # coverage report -m --fail-under=95
       - name: Upload coverage reports to Codecov

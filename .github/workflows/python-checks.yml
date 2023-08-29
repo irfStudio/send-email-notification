@@ -132,7 +132,7 @@ jobs:
 
       - name: Test with unittest
         run: |
-          coverage run -m unittest test/test.py
+          coverage run -m  --debug=trace unittest test/test.py
           coverage combine
           coverage report -m
         # coverage report -m --fail-under=95

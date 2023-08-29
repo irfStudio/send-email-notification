@@ -5,8 +5,9 @@ import base64
 import glob
 import mimetypes
 import os
-import sys
 import re
+import sys
+
 import markdown
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import (  # Category,; Content,; CustomArg,; Email,; MailSettings,; Personalization,; SandBoxMode,
@@ -60,7 +61,7 @@ if __name__ == "__main__":
         html_content=markdown.markdown(args.markdown_body),
     )
 
-    if args.attachments and len(args.attachments) == 1
+    if args.attachments and len(args.attachments) == 1:
         attachments = make_list(args.attachments[0])
         print("attachments entries:")
         print(attachments)

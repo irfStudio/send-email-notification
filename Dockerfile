@@ -10,7 +10,7 @@ COPY requirements.txt /
 RUN apk add --update libmagic && \
     pip install -U pip -r /requirements.txt
 
-COPY send-email.py ./
+COPY main.py ./
 
-ENTRYPOINT ["/app/send-email.py"]
+ENTRYPOINT ["/app/main.py"]
 

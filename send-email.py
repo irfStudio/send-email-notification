@@ -6,7 +6,7 @@ import glob
 import mimetypes
 import os
 import sys
-
+import re
 import markdown
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import (  # Category,; Content,; CustomArg,; Email,; MailSettings,; Personalization,; SandBoxMode,
@@ -37,14 +37,21 @@ parser.add_argument("--api-key", type=str, required=True, help="SendGrid API key
 
 parser.add_argument("--attachments", type=str, dest="attachments", default="", nargs="+", required=False, help="attachments")
 
+
+def make_list(arg: str):
+    """Converts a \n ; , separated string to a list"""
+    return list(filter(None, re.split(' |;|,|\n', str)))
+
+
 if __name__ == "__main__":
     args = parser.parse_args()
     print("to_email:")
     print(args.to_email)
-    to = [e for item in args.to_email for e in item.split(" ")]
 
-    print("to:")
-    print(to)
+    if args.to_email and len(args.to_email) == 1:
+        to = make_list(args.to_email[0])
+        print("--- to:")
+        print(to)
 
     message = Mail(
         from_email=args.from_email,
@@ -53,12 +60,13 @@ if __name__ == "__main__":
         html_content=markdown.markdown(args.markdown_body),
     )
 
-    A = [path for item in args.attachments for path in item.split(" ")]
-    print("attachments entries:")
-    print(A)
+    if args.attachments and len(args.attachments) == 1
+        attachments = make_list(args.attachments[0])
+        print("attachments entries:")
+        print(attachments)
 
-    if len(A):
-        for fname in A:
+    if len(attachments):
+        for fname in attachments:
             for f in glob.iglob(fname):  # generator, search immediate subdirectories
                 print("fname:")
                 print(f)

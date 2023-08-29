@@ -1,5 +1,9 @@
-#https://brntn.me/blog/open-source-python-ci/
-#https://github.com/sesh/thttp
+
+# References
+# https://brntn.me/blog/open-source-python-ci/
+# https://github.com/sesh/thttp
+
+
 name: Python Checks
 
 on:

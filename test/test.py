@@ -1,9 +1,11 @@
 import sys
 import os.path  
 import unittest
-src_path = (os.path.abspath(os.path.join(os.path.dirname(__file__), "..")) + "/src/")
+
+src_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "..")) + "/src/"
 sys.path.append(src_path)
 from sendmail import make_list
+
 
 class TestListElements(unittest.TestCase):
     def setUp(self):

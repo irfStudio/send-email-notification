@@ -13,3 +13,10 @@ profile = "black"
 
 [tool.coverage.report]
 include = ["sendemail.py"]
+show_missing = true
+
+[tool.coverage.paths]
+source = ["src"]
+
+[tool.coverage.run]
+source = ["src"]

@@ -70,7 +70,7 @@ if __name__ == "__main__":
                     print("fname:")
                     print(f)
                     basename = os.path.basename(f)
-    
+
                     print("basename:")
                     print(basename)
                     with open(f, "rb") as file:

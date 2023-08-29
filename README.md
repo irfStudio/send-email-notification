@@ -24,7 +24,9 @@ api-key: SendGrid API Key
 markdown-body: markkdown body
 to-email: space or `\n` separated list of 
 
-#### Send email to one address
+<details>
+<summary style="font-weight:bold;">Send email to one address</summary>
+
 ```yaml
       - uses: studioirf/send-email-notification@v1
         with:
@@ -41,8 +43,11 @@ to-email: space or `\n` separated list of
 
             Another description
 ```
+</details>
 
-#### Send email to multiple address upon Github release
+<details>
+<summary style="font-weight:bold;">Send email to multiple address upon Github release</summary>
+
 By using matrix strategy multiple emails can be sent
 
 ```yaml
@@ -72,8 +77,11 @@ jobs:
           markdown-body: ${{ github.event.release.body }}
 
 ```
+</details>
 
-#### Send email with attachments
+<details>
+<summary style="font-weight:bold;">Send email with attachments</summary>
+
 
 The step can be configured to send an email with file `example.txt` as attachment
 ```yaml
@@ -120,6 +128,8 @@ In the following example the step is configured to send multiple files matching 
 
 ##### References
 - for details on how to search for multiple files see [glob](https://docs.python.org/3/library/glob.html)
+</details>
+
 
 ### 2. Set the secrets
 - Create a new secret on your project named SENDGRID_API_TOKEN. Set the value to your [SendGrid API Key](https://sendgrid.com/docs/ui/account-and-settings/api-keys/).

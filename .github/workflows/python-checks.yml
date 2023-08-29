@@ -31,13 +31,12 @@ jobs:
     - name: Install test dependencies
       run: |
         pip install -e '.[test]'
-        cd src
         python -m pip install --upgrade pip
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
     - name: Test with unittest
       run: |
-        python -m unittest test/test_list.py
+        python -m unittest -v
 
   black:
     runs-on: ubuntu-latest
@@ -127,6 +126,7 @@ jobs:
       - name: Install test dependencies
         run: |
           pip install -e '.[test]'
+          python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
       - name: Install coverage.py
         run: |

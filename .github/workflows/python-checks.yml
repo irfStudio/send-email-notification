@@ -35,7 +35,7 @@ jobs:
 
     - name: Test with unittest
       run: |
-        python -m unittest send-email.py
+        python -m unittest test/test.py
 
   black:
     runs-on: ubuntu-latest

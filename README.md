@@ -1,4 +1,4 @@
-# E-mail Release Notification
+# Send Email Notification 
 This repo contains a re-usable GitHub Action that when installed sends an e-mail to a distribution list with the release notes every time a GitHub Release is created for the repository.
 
 ![python-checks](https://github.com/studioirf/send-email-notification/actions/workflows/python-checks.yml/badge.svg)
@@ -17,15 +17,21 @@ A [SendGrid API Key](https://sendgrid.com/docs/ui/account-and-settings/api-keys/
 ### 1. Create the workflow
 Add a new YML file workflow in `.github/workflows` to trigger on `release`. For example:
 
-#### Send email to one address
 
+from-email: must be a verified sendgrid email
+subject: is the subject of the email
+api-key: SendGrid API Key
+markdown-body: markkdown body
+to-email: space or `\n` separated list of 
+
+#### Send email to one address
 ```yaml
-      - uses: licenseware/send-email-notification@v1
+      - uses: studioirf/send-email-notification@v1
         with:
           api-key: ${{ secrets.SENDGRID_API_KEY }}
           subject: Test Subject
-          from-email: verified-email@licenseware.io
-          to-email: john-doe@licenseware.io
+          from-email: sender@domain.tld
+          to-email: recipient30@domain.tld
           markdown-body: |
             # My Markdown Title
 
@@ -37,6 +43,7 @@ Add a new YML file workflow in `.github/workflows` to trigger on `release`. For 
 ```
 
 #### Send email to multiple address upon Github release
+By using matrix strategy multiple emails can be sent
 
 ```yaml
 on:
@@ -51,16 +58,16 @@ jobs:
     strategy:
       matrix:
         to-emails:
-          - receiver10@licenseware.io receiver11@licenseware.io
-          - receiver2@licenseware.io
-          - receiver3@licenseware.io
+          - recipient10@domain.tld recipient11@domain.tld
+          - recipient20@domain.tld
+          - recipient30@domain.tld
 
     steps:
-      - uses: licenseware/send-email-notification@v1
+      - uses: studioirf/send-email-notification@v1
         with:
           api-key: ${{ secrets.SENDGRID_API_KEY }}
           subject: New Release ${{ github.repository }}:${{ github.ref_name }}
-          from-email: verified-email@licenseware.io
+          from-email: sender@domain.tld
           to-email: ${{ matrix.to-emails }}
           markdown-body: ${{ github.event.release.body }}
 
@@ -68,53 +75,55 @@ jobs:
 
 #### Send email with attachments
 
-Sending email with file `example.txt` as attachment
+The step can be configured to send an email with file `example.txt` as attachment
 ```yaml
     steps:
-      - uses: licenseware/send-email-notification@v1
+      - uses: studioirf/send-email-notification@v1
         with:
           api-key: ${{ secrets.SENDGRID_API_KEY }}
           subject: New Release ${{ github.repository }}:${{ github.ref_name }}
-          from-email: verified-email@licenseware.io
+          from-email: sender@domain.tld
           to-email: ${{ matrix.to-emails }}
           markdown-body: ${{ github.event.release.body }}
           attachments: Attachments/example.txt
 ```
 
 
-Sending all the txt files matching in `Attachments`
+In the following example the step is configured to send all the `.txt` files in the directory `Attachments`:
 ```yaml
     steps:
-      - uses: licenseware/send-email-notification@v1
+      - uses: studioirf/send-email-notification@v1
         with:
           api-key: ${{ secrets.SENDGRID_API_KEY }}
           subject: New Release ${{ github.repository }}:${{ github.ref_name }}
-          from-email: verified-email@licenseware.io
+          from-email: sender@domain.tld
           to-email: ${{ matrix.to-emails }}
           markdown-body: ${{ github.event.release.body }}
           attachments: Attachments/*.txt
 ```
 
-Sending multiple files matching specified patterns:
-- all `.txt` files in
+In the following example the step is configured to send multiple files matching specified patterns:
+- all `.txt` files in the directory `Attachments`
 - all `.csv` files across multiple directory levels
+- 
 ```yaml
     steps:
-      - uses: licenseware/send-email-notification@v1
+      - uses: studioirf/send-email-notification@v1
         with:
           api-key: ${{ secrets.SENDGRID_API_KEY }}
           subject: New Release ${{ github.repository }}:${{ github.ref_name }}
-          from-email: verified-email@licenseware.io
-          to-email: ${{ matrix.to-emails }}
+          from-email: sender@domain.tld
+          to-email: recipient1@domain.tld recipients@domain.tld 
           markdown-body: ${{ github.event.release.body }}
           attachments: Attachments/*.txt Attachments/**/*.csv 
 ```
 
 ##### References
-- [glob](https://docs.python.org/3/library/glob.html)
+- for details on how to search for multiple files see [glob](https://docs.python.org/3/library/glob.html)
 
-### 2. Set the SendGrid secret
-Create a new secret on your project named SENDGRID_API_TOKEN. Set the value to your [SendGrid API Key](https://sendgrid.com/docs/ui/account-and-settings/api-keys/).
+### 2. Set the secrets
+- Create a new secret on your project named SENDGRID_API_TOKEN. Set the value to your [SendGrid API Key](https://sendgrid.com/docs/ui/account-and-settings/api-keys/).
+
 
 ### 3. Test the workflow!
 

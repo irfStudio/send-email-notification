@@ -132,6 +132,6 @@ jobs:
 
       - name: Test with unittest
         run: |
-          coverage run -m unittest test/test.py
+          coverage run -m unittest discover
           coverage report -m
         # coverage report -m --fail-under=95

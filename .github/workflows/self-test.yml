@@ -39,7 +39,7 @@ jobs:
             # Hello again
 
             See attachment
-          attachments: Attachments/test/*.txt
+          attachments: test/Attachments/*.txt
           
   stable:
     if: github.event_name == 'release' && github.event.action == 'published'

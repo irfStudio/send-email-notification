@@ -1,7 +1,7 @@
 # E-mail Release Notification
 This repo contains a re-usable GitHub Action that when installed sends an e-mail to a distribution list with the release notes every time a GitHub Release is created for the repository.
 
-![python-checks](https://github.com/studioirf/send-email-notification/actions/workflows/python-checks.ymlbadge.svg)
+![python-checks](https://github.com/studioirf/send-email-notification/actions/workflows/python-checks.yml/badge.svg)
 
 Using [the Python library](https://pypi.org/project/sendgrid/), send email to people
 with the content, subject, attachments of your choice.

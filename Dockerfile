@@ -10,7 +10,7 @@ COPY requirements.txt /
 RUN apk add --update libmagic && \
     pip install -U pip -r /requirements.txt
 
-COPY sendmail.py ./
+COPY /src/sendmail.py ./
 
 ENTRYPOINT ["/app/sendmail.py"]
 

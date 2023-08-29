@@ -38,12 +38,9 @@ jobs:
           markdown-body: |
             # Hello again
 
-            Check the following sources
-          #attachments: |
-          #  Dockerfile
-          #  main.py
-          #attachments-disposition: inline
-
+            See attachment
+          attachments: Attachments/test/*.txt
+          
   stable:
     if: github.event_name == 'release' && github.event.action == 'published'
     runs-on: ubuntu-latest

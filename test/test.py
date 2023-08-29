@@ -1,5 +1,5 @@
 import unittest
-import main
+from sendmail import make_list
 
 class TestListElements(unittest.TestCase):
     def setUp(self):

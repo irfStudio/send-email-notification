@@ -46,61 +46,53 @@ def make_list(arg: str):
 
 if __name__ == "__main__":
     args = parser.parse_args()
-    
-
-    res = type(args.to_email[0]) == str
-    # print result
-    print("Is args.to_email[0] a string ? : " + str(res))
 
     if args.to_email and len(args.to_email) == 1:
-        print("--- to_email:")
-        print(args.to_email)
-        
         to = make_list(args.to_email[0])
         print("--- to:")
         print(to)
 
-    message = Mail(
-        from_email=args.from_email,
-        to_emails=to,
-        subject=args.subject,
-        html_content=markdown.markdown(args.markdown_body),
-    )
-
-    if args.attachments and len(args.attachments) == 1:
-        attachments = make_list(args.attachments[0])
-        print("attachments entries:")
-        print(attachments)
-
-    if len(attachments):
-        for fname in attachments:
-            for f in glob.iglob(fname):  # generator, search immediate subdirectories
-                print("fname:")
-                print(f)
-                basename = os.path.basename(f)
-
-                print("basename:")
-                print(basename)
-                with open(f, "rb") as file:
-                    content = base64.b64encode(file.read()).decode()
-
-                attachment = Attachment(
-                    file_content=content,
-                    file_type=mimetypes.guess_type(basename)[0],
-                    file_name=basename,
-                    disposition="attachment",
-                    content_id=f"<{basename}>",
-                )
-                message.add_attachment(attachment)
-
-    try:
-        sg = SendGridAPIClient(args.api_key)
-        response = sg.send(message)
-        print(response)
-        print(response.status_code)
-        print(response.body)
-        print(response.headers)
-    except Exception as exp:
-        sys.stderr.write(f"{exp}\n")
-
-        exit(1)
+        message = Mail(
+            from_email=args.from_email,
+            to_emails=to,
+            subject=args.subject,
+            html_content=markdown.markdown(args.markdown_body),
+        )
+    
+        if args.attachments and len(args.attachments) == 1:
+            attachments = make_list(args.attachments[0])
+            print("attachments entries:")
+            print(attachments)
+    
+        if len(attachments):
+            for fname in attachments:
+                for f in glob.iglob(fname):  # generator, search immediate subdirectories
+                    print("fname:")
+                    print(f)
+                    basename = os.path.basename(f)
+    
+                    print("basename:")
+                    print(basename)
+                    with open(f, "rb") as file:
+                        content = base64.b64encode(file.read()).decode()
+    
+                    attachment = Attachment(
+                        file_content=content,
+                        file_type=mimetypes.guess_type(basename)[0],
+                        file_name=basename,
+                        disposition="attachment",
+                        content_id=f"<{basename}>",
+                    )
+                    message.add_attachment(attachment)
+    
+        try:
+            sg = SendGridAPIClient(args.api_key)
+            response = sg.send(message)
+            print(response)
+            print(response.status_code)
+            print(response.body)
+            print(response.headers)
+        except Exception as exp:
+            sys.stderr.write(f"{exp}\n")
+    
+            exit(1)

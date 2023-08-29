@@ -112,3 +112,26 @@ jobs:
       - name: Run bandit scan
         run: |
           bandit -r .
+  coverage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      - name: Install test dependencies
+        run: |
+          pip install -e '.[test]'
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+      - name: Install coverage.py
+        run: |
+          pip install coverage
+
+      - name: Test with unittest
+        run: |
+          coverage run -m unittest test/test.py
+          coverage report -m
+        # coverage report -m --fail-under=95

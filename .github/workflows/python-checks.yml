@@ -140,14 +140,14 @@ jobs:
         #  coverage run -m unittest test/test_list.py
         #  coverage report -m
         # coverage report -m --fail-under=95
-      - name: Upload coverage reports to Codecov
-        uses: codecov/codecov-action@v3
-        env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+      # - name: Upload coverage reports to Codecov
+      #  uses: codecov/codecov-action@v3
+      #  env:
+      #    CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
           
       - name: Archive code coverage html report
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: code-coverage-report
           path: htmlcov

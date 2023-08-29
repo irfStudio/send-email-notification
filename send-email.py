@@ -46,10 +46,16 @@ def make_list(arg: str):
 
 if __name__ == "__main__":
     args = parser.parse_args()
-    print("to_email:")
-    print(args.to_email)
+    
+
+    res = type(args.to_email[0]) == str
+    # print result
+    print("Is args.to_email[0] a string ? : " + str(res))
 
     if args.to_email and len(args.to_email) == 1:
+        print("--- to_email:")
+        print(args.to_email)
+        
         to = make_list(args.to_email[0])
         print("--- to:")
         print(to)
